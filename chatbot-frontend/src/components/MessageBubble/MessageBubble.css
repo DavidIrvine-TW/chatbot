@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+.message-wrapper {
+  @apply flex w-full;
+}
+
+.message-wrapper.user {
+  @apply justify-end;
+}
+
+.message-wrapper.bot {
+  @apply justify-start items-start gap-3;
+}
+
+.bot-avatar {
+  @apply w-5 h-5 flex-shrink-0;
+  color: var(--color-quirk);
+}
+
+.message-bubble {
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.message-bubble.user {
+  background-color: var(--color-accent);
+  border: 1px solid var(--color-accent-hover);
+  color: var(--color-text-primary);
+  max-width: 70%;
+}
+
+.message-bubble.bot {
+  background-color: var(--color-bg-elevated);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border-default);
+  max-width: 600px;
+}
+
+.message-text {
+  @apply whitespace-pre-wrap;
+}
+
+@media (max-width: 768px) {
+  .message-bubble.user,
+  .message-bubble.bot {
+    max-width: 85%;
+  }
+}
