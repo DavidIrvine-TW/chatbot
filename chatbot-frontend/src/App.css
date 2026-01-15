@@ -17,6 +17,16 @@
   }
 }
 
+/* Widget Mode */
+.app.widget-mode {
+  @apply min-h-full;
+}
+
+.app.widget-mode .widget-content {
+  margin-left: 0;
+  height: 100vh;
+}
+
 .error-toast {
   @apply fixed bottom-6 right-6 px-4 py-3 flex items-center gap-3;
   background-color: var(--color-bg-elevated);

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import Sidebar from './components/Sidebar/Sidebar'
 import ChatWindow from './components/ChatWindow/ChatWindow'
 import { sendMessage } from './services/api'
@@ -8,6 +8,12 @@ const STORAGE_KEY = 'marvchat_conversations'
 const ACTIVE_KEY = 'marvchat_active_id'
 
 function App() {
+  // Check if running in widget mode
+  const isWidgetMode = useMemo(() => {
+    const params = new URLSearchParams(window.location.search)
+    return params.get('mode') === 'widget'
+  }, [])
+
   const [conversations, setConversations] = useState(() => {
     // Load from localStorage on initial render
     const saved = localStorage.getItem(STORAGE_KEY)
@@ -165,6 +171,29 @@ function App() {
     }
   }
 
+  // Widget mode - simplified layout without sidebar
+  if (isWidgetMode) {
+    return (
+      <div className="app widget-mode">
+        <main className="main-content widget-content">
+          <ChatWindow
+            messages={messages}
+            onSendMessage={handleSendMessage}
+            onClearChat={handleClearChat}
+            isLoading={isLoading}
+          />
+        </main>
+
+        {error && (
+          <div className="error-toast">
+            {error}
+          </div>
+        )}
+      </div>
+    )
+  }
+
+  // Full mode - with sidebar
   return (
     <div className="app">
       <Sidebar
