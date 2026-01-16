@@ -1,11 +1,11 @@
 (function() {
   'use strict';
 
-  // Configuration - update this URL after deployment
-  // const CHATBOT_URL = 'https://chat.marv-dev.com';
+  // Configuration
+  const CHATBOT_URL = 'https://chatbot-five-mu-76.vercel.app';
 
   // For local development, use:
-  const CHATBOT_URL = 'http://localhost:5173';
+  // const CHATBOT_URL = 'http://localhost:5173';
 
   // Create styles
   const styles = document.createElement('style');
