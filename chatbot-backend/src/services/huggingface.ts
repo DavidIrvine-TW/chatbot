@@ -33,7 +33,7 @@ export async function generateChatResponse(
   ];
 
   const modelSettings = {
-    model: 'meta-llama/Llama-3.2-3B-Instruct',
+    model: 'meta-llama/Llama-3.1-8B-Instruct',
     max_tokens: 500,
     temperature: 0.7,
     top_p: 0.95,
